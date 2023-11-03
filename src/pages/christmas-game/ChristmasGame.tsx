@@ -1,9 +1,8 @@
-import React, { FC, useEffect, useMemo, useState } from "react";
-import { Circle, Image as KonvaImage, Star } from "react-konva";
-import { Layer, Rect, Stage } from "react-konva";
+import { FC, useMemo, useState } from "react";
+import { Circle, Image as KonvaImage, Layer, Stage, Star } from "react-konva";
 import { MyImage } from "../../utils/image";
-import { useWindowSize } from "../../utils/useWindowSize";
 import useInterval from "../../utils/useInterval";
+import { useWindowSize } from "../../utils/useWindowSize";
 
 export const ChristmasGame: FC = () => {
   const TEST_IMAGE = "/images/tree/christmastree_nude.png";
@@ -124,8 +123,7 @@ export const ChristmasGame: FC = () => {
             <img src="" />
           </div>
         </div>
-
-        <button onClick={onClick}>Click me</button>
+        <button onClick={onClick}>Let it snow</button>
       </div>
     </>
   );
