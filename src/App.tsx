@@ -1,12 +1,12 @@
 import React, { createContext } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { ChristmasGame } from "./pages/christmas-game/ChristmasGame";
+import { Christmas } from "./pages/christmas/Christmas";
 
 function App() {
   return (
     <>
-      <ChristmasGame />
+      <Christmas />
     </>
   );
 }

@@ -1,12 +1,12 @@
+import { Button } from "@material-ui/core";
+import InsertPhotoIcon from "@material-ui/icons/InsertPhoto";
 import { FC, useMemo, useState } from "react";
 import { Circle, Image as KonvaImage, Layer, Stage, Star } from "react-konva";
 import { MyImage } from "../../utils/image";
 import useInterval from "../../utils/useInterval";
 import { useWindowSize } from "../../utils/useWindowSize";
-import { Button, styled } from "@material-ui/core";
-import InsertPhotoIcon from "@material-ui/icons/InsertPhoto";
 
-export const ChristmasGame: FC = () => {
+export const Christmas: FC = () => {
   const TEST_IMAGE = "/images/tree/christmastree_nude.png";
   const [filePath, setFilePath] = useState(TEST_IMAGE);
   const [x, setX] = useState(40);
