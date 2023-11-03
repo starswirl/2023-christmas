@@ -27,18 +27,12 @@ export const ChristmasGame: FC = () => {
   const ySnowBallQuantity = parseInt(`${height / Y_SNOW_DIFF}`);
 
   const onChange = (e: any) => {
-    console.log("onChange");
     setFilePath(URL.createObjectURL(e.target.files[0]));
-    console.log("setFilePath");
     console.log(URL.createObjectURL(e.target.files[0]));
     const img = new Image();
-    console.log("img");
-    console.log(img);
     img.onload = () => {
       const ratio = height / img.height;
       setImageDimensions({ width: img.width * ratio, height: img.height });
-      console.log("{ width: img.width * ratio, height: img.height }");
-      console.log({ width: img.width * ratio, height: img.height });
     };
     img.src = URL.createObjectURL(e.target.files[0]);
   };
