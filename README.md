@@ -1,6 +1,6 @@
 # 2023-christmas
 
-![chrome-capture-2023-11-3](https://github.com/starswirl/2023-christmas/assets/11594142/25dd94f1-7011-4ec1-8e35-caea6db47def)
+![chrome-capture-2023-11-3](https://github.com/starswirl/2023-christmas/assets/11594142/966cc2e4-5b65-427e-8393-a3917aed89b3)
 
 
 ## 環境構築
