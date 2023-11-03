@@ -3,6 +3,8 @@ import { Circle, Image as KonvaImage, Layer, Stage, Star } from "react-konva";
 import { MyImage } from "../../utils/image";
 import useInterval from "../../utils/useInterval";
 import { useWindowSize } from "../../utils/useWindowSize";
+import { Button, styled } from "@material-ui/core";
+import InsertPhotoIcon from "@material-ui/icons/InsertPhoto";
 
 export const ChristmasGame: FC = () => {
   const TEST_IMAGE = "/images/tree/christmastree_nude.png";
@@ -18,6 +20,8 @@ export const ChristmasGame: FC = () => {
 
   const [width, height] = useWindowSize();
 
+  const INIT_PIC_WIDTH = 466;
+
   const INIT_X = 50;
   const INIT_Y = -height;
 
@@ -28,7 +32,6 @@ export const ChristmasGame: FC = () => {
 
   const onChange = (e: any) => {
     setFilePath(URL.createObjectURL(e.target.files[0]));
-    console.log(URL.createObjectURL(e.target.files[0]));
     const img = new Image();
     img.onload = () => {
       const ratio = height / img.height;
@@ -56,7 +59,7 @@ export const ChristmasGame: FC = () => {
         const xRundom = parseInt(`${Math.random() * 50}`);
         const yRundom = parseInt(`${Math.random() * 50}`);
         return {
-          isStar: Math.floor(Math.random() * 1231) === 1224,
+          isStar: Math.floor(Math.random() * 1231) === 1225,
           x: INIT_X + X_SNOW_DIFF * j + xRundom + xShift,
           y: INIT_Y + Y_SNOW_DIFF * i + yRundom,
           radius: size,
@@ -69,14 +72,20 @@ export const ChristmasGame: FC = () => {
   return (
     <>
       <div>
-        <div style={{ backgroundColor: "black", display: "flex" }}>
+        <div style={{ backgroundColor: "#5e7168" }}>
           <Stage width={width} height={height - 100}>
             <Layer>
               <KonvaImage
                 width={imageDimensions?.width}
                 height={height}
                 image={MyImage(filePath)}
-                x={0}
+                x={
+                  (width -
+                    (!!imageDimensions
+                      ? imageDimensions.width
+                      : INIT_PIC_WIDTH)) /
+                  2
+                }
                 y={0}
               />
               {!!width &&
@@ -111,13 +120,45 @@ export const ChristmasGame: FC = () => {
             </Layer>
           </Stage>
         </div>
-        <div>
-          <input type="file" accept="image/*" onChange={onChange} />
-          <div>
-            <img src="" />
-          </div>
-        </div>
-        <button onClick={onClick}>Let it snow</button>
+      </div>
+      <div
+        style={{
+          padding: "30px",
+          display: "flex",
+          justifyContent: "center",
+          backgroundColor: "#a17f57",
+        }}
+      >
+        <Button
+          component="label"
+          variant="contained"
+          startIcon={<InsertPhotoIcon />}
+        >
+          Upload file
+          <input
+            type="file"
+            accept="image/*"
+            style={{
+              clip: "rect(0 0 0 0)",
+              clipPath: "inset(50%)",
+              height: 1,
+              overflow: "hidden",
+              position: "absolute",
+              bottom: 0,
+              left: 0,
+              whiteSpace: "nowrap",
+              width: 1,
+            }}
+            onChange={onChange}
+          />
+        </Button>
+        <Button
+          variant="contained"
+          onClick={onClick}
+          style={{ marginLeft: "30px" }}
+        >
+          Let it snow
+        </Button>
       </div>
     </>
   );
