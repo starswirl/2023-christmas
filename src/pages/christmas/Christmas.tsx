@@ -67,7 +67,7 @@ export const Christmas: FC = () => {
       })
     );
     return newList;
-  }, [width, height]);
+  }, [INIT_Y, xSnowBallQuantity, ySnowBallQuantity]);
 
   return (
     <>
