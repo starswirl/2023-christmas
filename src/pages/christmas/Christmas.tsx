@@ -16,7 +16,7 @@ export const Christmas: FC = () => {
     height: number;
   } | null>(null);
   const [snowEnable, setSnowEnable] = useState(false);
-  const size = 10;
+  const SNOW_SIZE = 5;
 
   const [width, height] = useWindowSize();
 
@@ -25,9 +25,13 @@ export const Christmas: FC = () => {
   const INIT_X = 50;
   const INIT_Y = -height;
 
-  const X_SNOW_DIFF = 200;
-  const xSnowBallQuantity = parseInt(`${width / X_SNOW_DIFF}`);
-  const Y_SNOW_DIFF = 200;
+  const MARGIN_SNOW_Quantity = 8;
+
+  const X_SNOW_DIFF = 100;
+  const xSnowBallQuantity = parseInt(
+    `${width / X_SNOW_DIFF + MARGIN_SNOW_Quantity}`
+  );
+  const Y_SNOW_DIFF = 100;
   const ySnowBallQuantity = parseInt(`${height / Y_SNOW_DIFF}`);
 
   const onChange = (e: any) => {
@@ -62,7 +66,7 @@ export const Christmas: FC = () => {
           isStar: Math.floor(Math.random() * 1231) === 1225,
           x: INIT_X + X_SNOW_DIFF * j + xRundom + xShift,
           y: INIT_Y + Y_SNOW_DIFF * i + yRundom,
-          radius: size,
+          radius: SNOW_SIZE,
         };
       })
     );
@@ -96,7 +100,7 @@ export const Christmas: FC = () => {
                       {e.isStar ? (
                         <Star
                           key={`star-${i}`}
-                          x={e.x + Math.cos(x) * 100}
+                          x={e.x + Math.cos(x) * 100 - 400}
                           y={e.y + y}
                           numPoints={5}
                           innerRadius={e.radius}
@@ -107,7 +111,7 @@ export const Christmas: FC = () => {
                       ) : (
                         <Circle
                           key={`circle-${i}`}
-                          x={e.x + Math.cos(x) * 100}
+                          x={e.x + Math.cos(x) * 100 - 400}
                           y={e.y + y}
                           radius={e.radius}
                           fill="#fff"
